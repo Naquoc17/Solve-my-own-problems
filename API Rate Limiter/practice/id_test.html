@@ -1,0 +1,14 @@
+<p id="note">First</p>
+<p id="note">Second</p>
+<script>
+  console.log(document.getElementById("note").textContent);
+</script>
+
+<label for="tos">I accept the terms</label>
+<input type="checkbox" id="accept" name="tos" />
+
+<form action="/transfer" method="post">
+  <input type="hidden" name="from_account" value="12345" />
+  <input name="amount" />
+  <button>Send</button>
+</form>

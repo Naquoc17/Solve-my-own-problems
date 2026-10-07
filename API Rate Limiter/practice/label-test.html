@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <title>Label association test</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      padding: 2rem;
+      line-height: 2.2;
+    }
+    fieldset {
+      margin-bottom: 1.5rem;
+      max-width: 30rem;
+    }
+  </style>
+
+  <fieldset>
+    <legend>A — BROKEN (for tro sai id)</legend>
+    <label for="tos">I accept the terms</label>
+    <input type="checkbox" id="accept" name="tos" />
+  </fieldset>
+
+  <fieldset>
+    <legend>B — CORRECT (explicit, for = id)</legend>
+    <label for="tos-ok">I accept the terms</label>
+    <input type="checkbox" id="tos-ok" name="tos2" />
+  </fieldset>
+
+  <fieldset>
+    <legend>C — CORRECT (implicit, label boc input)</legend>
+    <label><input type="checkbox" name="tos3" /> I accept the terms</label>
+  </fieldset>
+
+  <script>
+    document.querySelectorAll("input").forEach((el, i) => {
+      console.log(
+        ["A", "B", "C"][i],
+        "| id:",
+        el.id || "(none)",
+        "| so label lien ket:",
+        el.labels.length,
+        "| accessible name:",
+        el.labels[0]?.textContent.trim() ?? "(RONG)",
+      );
+    });
+  </script>
+</html>

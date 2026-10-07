@@ -1,5 +1,6 @@
 import redis
 import time
+from collections import defaultdict
 
 class RedisStore:
     
@@ -21,6 +22,10 @@ class RedisStore:
     def increment_count(self, client_id: str, count: int, window_sec: int) -> int:
         return self.redis.eval(self._LUA, 1, client_id, count, window_sec)
         
+class LocalBuffer:
+
+
+    
 class RulesStore:
     _CONFIG_SOURCE = {
         "client_A": {"limit": 100, "window_sec": 60},
